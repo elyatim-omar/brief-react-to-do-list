@@ -3,11 +3,11 @@ class Task extends React.Component {
   constructor(props) {
     super(props)
   }
-  
+
   render() {
     let class_name = 'task'
     class_name += this.props.done ? ' task-success' : ' task-info';
-  
+
     return (
       <div className={class_name}>
         <span>{this.props.value}</span>
@@ -20,23 +20,37 @@ class Task extends React.Component {
 // Application
 class App extends React.Component {
 
-  tasksArray = [
-      {value: 'Tâche 1', done: true},
-      {value: 'Tâche 2', done: false},
-      {value: 'Tâche 3', done: false}
-    ];
-
   constructor(props) {
     super(props)
 
-    
+    this.state = {
+      taskList: [{ value: "tâche1", done: true }]
+    };
+  }
+  componentDidMount() {
+    this.chargementDonnees();
+  }
+  chargementDonnees() {
+
+    var dataList = null;
+    // Chargement de données par Ajax
+    $.getJSON("/5-%C3%A9v%C3%A9nements-state/to-do-list_v1/data.json",
+      function (data) {
+        this.setState({ taskList: data });
+      }.bind(this))
+      .fail(function (jqXHR, textStatus, errorThrown) {
+
+        console.log(errorThrown);
+      })
+      ;
+
   }
 
   render() {
-   
-    let tasksArrayMap = this.tasksArray.map((task, i) => {
+
+    let tasksArrayMap = this.state.taskList.map((task, i) => {
       return (
-        <Task 
+        <Task
           key={i}
           value={task.value}
           done={task.done}
@@ -53,7 +67,7 @@ class App extends React.Component {
               id="form-add"
               className="form-horizontal">
               <div className="input-group">
-                <input type="text" id="addInput" className="form-control"  placeholder="Description de la tâche..." />
+                <input type="text" id="addInput" className="form-control" placeholder="Description de la tâche..." />
                 <div className="input-group-btn">
                   <button type="submit" className="btn btn-default">
                     <span className="glyphicon glyphicon-plus-sign"></span>
@@ -63,7 +77,7 @@ class App extends React.Component {
             </form>
 
             {tasksArrayMap}
-            
+
           </div>
         </div>
       </div>
