@@ -1,5 +1,7 @@
 [
-    {"value": "Tâche 1", "done": true},
-    {"value": "Tâche 2", "done": false},
-    {"value": "Tâche 3", "done": false}
+    {"value": "autoformation reactjs", "done": true},
+    {"value": "projet 7 v 5", "done": false},
+    {"value": "presentation", "done": false},
+    {"value": "realisation", "done": false}
+
 ]

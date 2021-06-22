@@ -24,7 +24,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      taskList: [{ value: "tâche1", done: true }]
+      taskList: []
     };
   }
   componentDidMount() {
@@ -32,17 +32,12 @@ class App extends React.Component {
   }
   chargementDonnees() {
 
-    var dataList = null;
+    
     // Chargement de données par Ajax
-    $.getJSON("/5-%C3%A9v%C3%A9nements-state/to-do-list_v1/data.json",
+    $.getJSON("data.json",
       function (data) {
         this.setState({ taskList: data });
       }.bind(this))
-      .fail(function (jqXHR, textStatus, errorThrown) {
-
-        console.log(errorThrown);
-      })
-      ;
 
   }
 
@@ -58,16 +53,17 @@ class App extends React.Component {
       )
     })
 
+
     return (
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
-            <h1> Tâches à faire</h1>
+            <h1> Tasks TO Do</h1>
             <form
               id="form-add"
               className="form-horizontal">
               <div className="input-group">
-                <input type="text" id="addInput" className="form-control" placeholder="Description de la tâche..." />
+                <input type="text" id="addInput" className="form-control" placeholder="enter your task here..." />
                 <div className="input-group-btn">
                   <button type="submit" className="btn btn-default">
                     <span className="glyphicon glyphicon-plus-sign"></span>
