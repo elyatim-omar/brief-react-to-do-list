@@ -21,9 +21,9 @@ class Task extends React.Component {
 class App extends React.Component {
 
   tasksArray = [
-      {value: 'Tâche 1', done: true},
-      {value: 'Tâche 2', done: false},
-      {value: 'Tâche 3', done: false}
+      {value: 'React', done: true},
+      {value: 'jquery', done: false},
+      {value: 'PHP', done: false}
     ];
 
   constructor(props) {
@@ -48,12 +48,12 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
-            <h1> Tâches à faire</h1>
+            <h1> Tasks gestion</h1>
             <form
               id="form-add"
               className="form-horizontal">
               <div className="input-group">
-                <input type="text" id="addInput" className="form-control"  placeholder="Description de la tâche..." />
+                <input type="text" id="addInput" className="form-control"  placeholder="enter your task here..." />
                 <div className="input-group-btn">
                   <button type="submit" className="btn btn-default">
                     <span className="glyphicon glyphicon-plus-sign"></span>
