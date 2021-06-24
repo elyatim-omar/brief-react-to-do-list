@@ -95,13 +95,13 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
-            <h1> Tâches à faire</h1>
+           <h1>Tasks gestion</h1> 
             <form
               id="form-add"
               className="form-horizontal"
               onSubmit={this.addTask.bind(this)}>
               <div className="input-group">
-                <input type="text" id="addInput" className="form-control" onChange={this.onChangeInput.bind(this)} placeholder="Description de la tâche..." />
+                <input type="text" id="addInput" className="form-control" onChange={this.onChangeInput.bind(this)} placeholder="enter your tasks..." />
                 <div className="input-group-btn">
                   <button type="submit" className="btn btn-default">
                     <span className="glyphicon glyphicon-plus-sign"></span>
