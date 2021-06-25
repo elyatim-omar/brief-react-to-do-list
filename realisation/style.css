@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
+
+h1 { font-size: 50px; 
+  font-family: "Rajdhani", sans-serif;}
+form { margin-bottom: 20px ;
+ }
+i { font-style: normal }
+
+.tache {
+  color: #ff712f;
+  padding: 20px;
+  
+  margin-bottom: 5%;
+}
+.tache:hover {
+  cursor: pointer;
+  opacity: .64;
+}
+.tache p:last-child { margin-bottom: 0 }
+.tache+.tache { margin-top: -5px }
+.tache-faite {
+  background-color: #e8ecf5;
+  border-left: 5px solid #eee;
+  border-color: #004cff;
+  border-width: 10px;
+  color: #93b3ff;
+  text-decoration: line-through;
+  font-style: italic;
+}
+.tache-faite .close{
+  color: #004cff;
+}
+.tache-info {
+  background-color: #feeae1;
+  border-right: 5px solid #eee;
+  border-color: #ff5100;
+  border-width: 10px;
+}
+
+.head {
+  color: #e8ecf5;
+  background-color: #ff5100;
+  margin-bottom: 5%;
+}
+
+ .close {
+  color: #ff2f2f;
+}
+
+.form-control {
+  border: none;
+  background-color: #ffffff;
+  font-size: 18px;
+  color: #ff8845;
+  padding: 24px;
+  width: 90%;
+  border : 2px solid #ff712f;
+}
+
+.form-control::placeholder{
+  color: #ffbea0;
+}
+
+.btn-default{
+  padding: 14px;
+  border : 2px solid #ff712f;
+}
+.btn-default:hover  {
+  
+  background-color: #ff712f;
+  border : 2px solid #ff712f;
+}
+
+
+.glyphicon{
+  color: #ff5100;
+}
+
+.glyphicon:hover{
+  color: white;
+}
+
+
+

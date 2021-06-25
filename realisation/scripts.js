@@ -9,7 +9,7 @@ class Tache extends React.Component {
       return (
           <div className={class_name} onClick={this.props.onClickTask}>
               <span>{this.props.value}</span>
-              <i className="close" onClick={this.props.onClickClose}>&times;</i>
+              <i className="close fa fa-trash" onClick={this.props.onClickClose}></i>
           </div>
       )
   }
@@ -80,7 +80,7 @@ class App extends React.Component {
       }.bind(this)
     })
     
-  // alert("hey");
+
 }
 markDone(i,status) {
 
@@ -112,20 +112,6 @@ if (status != 1) {
   })
 }
 
- 
-  // let tasksArray = this.state.tasksArray
-  // let task = this.state.tasksArray[i]
-  // tasksArray.splice(i, 1)
-  // task.done = !task.done 
-  
-  // task.done ? tasksArray.push(task) : tasksArray.unshift(task)
-
-
-  // this.setState({
-  //   tasksArray: tasksArray
-  // })
-
-
 }
 
 
@@ -144,15 +130,17 @@ if (status != 1) {
     })
 
     return (
-      <div className="container">
+      
+      <div className="container float-left">
+      <div className="head col-sm-12 "> <h1 className="text-center"> TO DO LIST </h1> </div>
         <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
-            <h1> Mes taches</h1>
-            <form
-              id="form-add"
+         
+            
+            <form id="form-add"
               className="form-horizontal" onSubmit={this.addTask.bind(this)}>
               <div className="input-group">
-                <input type="text" id="addInput" className="form-control"  placeholder="Enterz une tache..." />
+                <input type="text" id="addInput" className="form-control"  placeholder="enter your task..."  required />
                 <div className="input-group-btn">
                   <button type="submit" className="btn btn-default">
                     <span className="glyphicon glyphicon-plus-sign"></span>
