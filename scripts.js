@@ -7,9 +7,9 @@ class Tache extends React.Component {
       class_name += this.props.done ? ' tache-faite' : ' tache-info';
 
       return (
-          <div className={class_name}>
+          <div className={class_name} onClick={this.props.onClickTask}>
               <span>{this.props.value}</span>
-              <i className="close">&times;</i>
+              <i className="close" onClick={this.props.onClickClose}>&times;</i>
           </div>
       )
   }
@@ -36,6 +36,7 @@ class App extends React.Component {
 
     $.getJSON( "api/gettasks.php", 
     function( data ) {
+      console.log(data)
       this.setState({ tacheList: data});
     }.bind(this))
     .fail(function(jqXHR, textStatus, errorThrown) 
@@ -60,32 +61,54 @@ class App extends React.Component {
       }.bind(this)
       })
     
-//     if (addInput.value.length != 0) {
-//      this.state.tasksArray.push({
-//        value: addInput.value,
-//        done: false
-//      })
-     
-     
-//      this.setState(state => ({
-//        tasksArray: state.tasksArray
-//      }));
-
-//    }
 
    e.preventDefault()
  }
 
+ removeTask(i) {
+ 
+    $.ajax({
+      url:"/api/deletetasks.php",
+      method:"POST",
+      data:{
+        sid : i
+      },
+      success:function(data) {
+        
+        $(this).parent().remove();
+        this.chargementDonnees()
+      }.bind(this)
+    })
+    
+  // alert("hey");
+}
+markDone(i) {
+  // let tasksArray = this.state.tasksArray
+  // let task = this.state.tasksArray[i]
+  // tasksArray.splice(i, 1)
+  // task.done = !task.done 
+  
+  // task.done ? tasksArray.push(task) : tasksArray.unshift(task)
+
+
+  // this.setState({
+  //   tasksArray: tasksArray
+  // })
+
+  alert("like");
+}
 
 
   render() {
    
-    let tachesArrayMap = this.state.tacheList.map((tache, i) => {
+    let tachesArrayMap = this.state.tacheList.map((tache,i) => {
       return (
         <Tache 
-          key={i}
+          key={tache.id}
           value={tache.task}
           done={tache.done}
+          onClickClose={this.removeTask.bind(this, tache.id)}
+          onClickTask={this.markDone.bind(this, i)}
         />
       )
     })

@@ -18,12 +18,12 @@ i { font-style: normal }
 .tache p:last-child { margin-bottom: 0 }
 .tache+.tache { margin-top: -5px }
 .tache-faite {
-  background-color: #cbf3f0;
-  border-left-color: #10f0e1;
+  background-color: #e8ecf5;
+  border-left-color: #004cff;
   text-decoration: line-through;
   font-style: italic;
 }
 .tache-info {
-  background-color: #dfe7fd;
-  border-left-color: #245eff;
+  background-color: #feeae1;
+  border-left-color: #ff5100;
 }
