@@ -4,7 +4,7 @@ class Tache extends React.Component {
 
   render() {
       let class_name = 'tache'
-      class_name += this.props.done ? ' tache-faite' : ' tache-info';
+      class_name += this.props.done == 1 ? ' tache-faite' : ' tache-info';
 
       return (
           <div className={class_name} onClick={this.props.onClickTask}>
@@ -36,7 +36,7 @@ class App extends React.Component {
 
     $.getJSON( "api/gettasks.php", 
     function( data ) {
-      console.log(data)
+     
       this.setState({ tacheList: data});
     }.bind(this))
     .fail(function(jqXHR, textStatus, errorThrown) 
@@ -57,7 +57,7 @@ class App extends React.Component {
         },
         success:function(data) {
           this.chargementDonnees()
-          console.log(data)
+          
       }.bind(this)
       })
     
@@ -82,7 +82,37 @@ class App extends React.Component {
     
   // alert("hey");
 }
-markDone(i) {
+markDone(i,status) {
+
+if (status != 1) {
+  $.ajax({
+    url:"api/edittask.php",
+    method:"POST",
+    data:{
+      sid : i,
+      done : 1
+    },
+    success:function(data) {
+      this.chargementDonnees()
+     
+  }.bind(this)
+  })
+}else{
+  $.ajax({
+    url:"api/edittask.php",
+    method:"POST",
+    data:{
+      sid : i,
+      done : 0
+    },
+    success:function(data) {
+      this.chargementDonnees()
+      
+  }.bind(this)
+  })
+}
+
+ 
   // let tasksArray = this.state.tasksArray
   // let task = this.state.tasksArray[i]
   // tasksArray.splice(i, 1)
@@ -95,20 +125,20 @@ markDone(i) {
   //   tasksArray: tasksArray
   // })
 
-  alert("like");
+
 }
 
 
   render() {
    
-    let tachesArrayMap = this.state.tacheList.map((tache,i) => {
+    let tachesArrayMap = this.state.tacheList.map((tache) => {
       return (
         <Tache 
           key={tache.id}
           value={tache.task}
           done={tache.done}
           onClickClose={this.removeTask.bind(this, tache.id)}
-          onClickTask={this.markDone.bind(this, i)}
+          onClickTask={this.markDone.bind(this, tache.id,tache.done)}
         />
       )
     })
